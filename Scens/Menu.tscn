@@ -1,17 +1,29 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
+[ext_resource path="res://resourses/OpenSans-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
 
 [node name="Menu" type="Node2D"]
+script = ExtResource( 1 )
 
 [node name="Server creating" type="Button" parent="."]
-margin_left = 98.0
-margin_top = 143.0
-margin_right = 303.0
-margin_bottom = 183.0
-text = "CREATE SERVER"
+margin_left = 121.0
+margin_top = 146.0
+margin_right = 326.0
+margin_bottom = 186.0
+custom_fonts/font = SubResource( 1 )
+text = "Создать сервер АУ(Е)"
 
 [node name="Server loading" type="Button" parent="."]
 margin_left = 98.0
 margin_top = 230.0
 margin_right = 303.0
 margin_bottom = 270.0
-text = "CONNECT TO SERVER"
+custom_fonts/font = SubResource( 2 )
+text = "Подключиться к серверу АУ(Е)"
