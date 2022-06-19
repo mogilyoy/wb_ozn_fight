@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mp40-single-shot-close-perspective-02.mp3-fad4bcac9e857e78af58e670ec1ce77a.mp3str"
+
+[deps]
+
+source_file="res://Sounds/mp40-single-shot-close-perspective-02.mp3"
+dest_files=[ "res://.import/mp40-single-shot-close-perspective-02.mp3-fad4bcac9e857e78af58e670ec1ce77a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
