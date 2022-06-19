@@ -27,3 +27,6 @@ margin_right = 303.0
 margin_bottom = 270.0
 custom_fonts/font = SubResource( 2 )
 text = "Подключиться к серверу АУ(Е)"
+
+[connection signal="pressed" from="Server creating" to="." method="_on_Server_creating_pressed"]
+[connection signal="pressed" from="Server loading" to="." method="_on_Server_loading_pressed"]
