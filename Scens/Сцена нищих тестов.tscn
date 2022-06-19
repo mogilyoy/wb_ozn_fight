@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="Skin" id=3]
 
 [sub_resource type="BoxShape" id=2]
 
@@ -9,6 +11,7 @@
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 3.45555, 0, 0, 0, 3.45555, 0, 0, 0, 3.45555, 0, 0, 0 )
 mesh = SubResource( 1 )
+skin = SubResource( 3 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MeshInstance"]
@@ -16,3 +19,16 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
 transform = Transform( 1, 0, 0, 0, -0.00859702, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.759221, 0.102055, -0.642781, -0.000563301, 0.987732, 0.156157, 0.650832, -0.118196, 0.749965, -4.18847, 0.537772, 4.54135 )
+fov = 36.3
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.97201, 0.234939, 0, -0.234939, -0.97201, -0.454064, 3.38583, -6.92174 )
+
+[node name="PositionPlayer_1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.0429045, 0.999079, 0, -0.999079, 0.0429045, -1.84106, 0.414141, 2.92254 )
+
+[node name="PositionPlayer_2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.0429045, 0.999079, 0, -0.999079, 0.0429045, -1.84106, 0.414141, 2.92254 )
