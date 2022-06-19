@@ -1,0 +1,17 @@
+[gd_scene format=2]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Server creating" type="Button" parent="."]
+margin_left = 98.0
+margin_top = 143.0
+margin_right = 303.0
+margin_bottom = 183.0
+text = "CREATE SERVER"
+
+[node name="Server loading" type="Button" parent="."]
+margin_left = 98.0
+margin_top = 230.0
+margin_right = 303.0
+margin_bottom = 270.0
+text = "CONNECT TO SERVER"
