@@ -1,16 +1,13 @@
 extends Node2D
 
 func _ready():
-	get_tree().connect('network_peer_connected', self, '_connected')
-
-
+	get_tree().connect("network_peer_connected", self, '_connected')
 
 func _on_Server_creating_pressed():
 	var server = NetworkedMultiplayerENet.new()
-	server.create_server(7777, 5)
+	server.create_server(7777, 2)
 	get_tree().set_network_peer(server)
 	print('created')
-
 
 func _on_Server_loading_pressed():
 	var client = NetworkedMultiplayerENet.new()
