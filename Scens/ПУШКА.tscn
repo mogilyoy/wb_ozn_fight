@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://3d/3dхуйня/mp40(треугольнички).glb" type="PackedScene" id=1]
-[ext_resource path="res://Sounds/mp40-single-shot-close-perspective-02.mp3" type="AudioStream" id=2]
+[ext_resource path="res://Sounds/mp40-single-shot-close-perspective-02_UjZBJK33.mp3" type="AudioStream" id=2]
+[ext_resource path="res://Scripts/ПУШКА.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -30,12 +31,36 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("БАХ:playing")
+tracks/2/path = NodePath("BAX:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Particles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BAX:stream_paused")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -45,7 +70,6 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=2]
 resource_name = "Отдача"
 length = 0.5
-loop = true
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Plane:translation")
@@ -54,7 +78,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.19 ),
+"times": PoolRealArray( 0, 0.06, 0.14 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( -1.44386, 0.613005, 0 ), Vector3( -2, 0.613, 0 ), Vector3( -1.444, 0.613, 0 ) ]
@@ -66,33 +90,66 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.19 ),
+"times": PoolRealArray( 0, 0.06, 0.14 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 6.309 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 7.176 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("БАХ:playing")
+tracks/2/path = NodePath("BAX:playing")
 tracks/2/interp = 1
-tracks/2/loop_wrap = true
+tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( -0.016176 ),
+"times": PoolRealArray( 0, 0.44 ),
+"transitions": PoolRealArray( -0.812253, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Particles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.06 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.31
+gravity = Vector3( 200, 0, 0 )
+initial_velocity = -200.0
+initial_velocity_random = 0.53
+
+[sub_resource type="CylinderMesh" id=4]
+height = 3.0
+
 [node name="mp40(треугольнички)" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
 
-[node name="Plane" parent="." index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44386, 0.613005, 0 )
-
-[node name="ОТДАЧА" type="AnimationPlayer" parent="." index="2"]
+[node name="Anim" type="AnimationPlayer" parent="." index="2"]
 anims/RESET = SubResource( 1 )
 "anims/Отдача" = SubResource( 2 )
 
-[node name="БАХ" type="AudioStreamPlayer" parent="." index="3"]
+[node name="Particles" type="Particles" parent="." index="3"]
+transform = Transform( -1.66103e-09, 0.038, 0, -0.038, -1.66103e-09, 0, 0, 0, 0.038, -2.25443, 0.787164, -0.0135415 )
+emitting = false
+amount = 1
+lifetime = 0.3
+one_shot = true
+visibility_aabb = AABB( -4, -3.85596, -4, 8, 8, 8 )
+process_material = SubResource( 3 )
+draw_passes = 3
+draw_pass_1 = SubResource( 4 )
+draw_pass_2 = null
+draw_pass_3 = null
+
+[node name="BAX" type="AudioStreamPlayer" parent="." index="4"]
+pause_mode = 1
 stream = ExtResource( 2 )
-volume_db = 7.058
+volume_db = 4.436

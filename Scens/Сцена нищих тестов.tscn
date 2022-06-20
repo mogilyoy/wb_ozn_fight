@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scens/Player1_test.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scens/BadGuy.tscn" type="PackedScene" id=2]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -9,9 +10,10 @@
 [sub_resource type="BoxShape" id=2]
 
 [node name="Spatial" type="Spatial"]
+transform = Transform( 1.05968, 0, 0, 0, 1.05968, 0, 0, 0, 1.05968, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 3.45555, 0, 0, 0, 3.45555, 0, 0, 0, 3.45555, 0, 0, 0 )
+transform = Transform( 12.3307, 0, 0, 0, 12.3307, 0, 0, 0, 12.3307, 0, 0, 0 )
 mesh = SubResource( 1 )
 skin = SubResource( 3 )
 material/0 = null
@@ -36,4 +38,13 @@ transform = Transform( 1, 0, 0, 0, 0.0429045, 0.999079, 0, -0.999079, 0.0429045,
 transform = Transform( 1, 0, 0, 0, 0.0429045, 0.999079, 0, -0.999079, 0.0429045, -1.84106, 0.414141, 2.92254 )
 
 [node name="KinematicBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.605947, 0, 0, 0, 0.605947, 0, 0, 0, 0.605947, -1.24912, 0.0297093, -0.136398 )
+transform = Transform( 0.605947, 0, 0, 0, 0.605947, 0, 0, 0, 0.605947, -2.73369, 0.0297093, -2.36014 )
+
+[node name="BadGuy" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.750457, 0, 0, 0, 0.750457, 0, 0, 0, 0.750457, 2.39649, 0.0297196, 2.91625 )
+
+[node name="BadGuy2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.52579, 0, 0, 0, 1.02085, 0, 0, 0, 0.52579, -0.600456, -0.0276054, 2.74751 )
+
+[node name="BadGuy3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.37569, 0, 0, 0, 0.729813, 0, 0, 0, 1.00251, 2.54431, 0.0297072, 0.142197 )

@@ -4,7 +4,7 @@ extends KinematicBody
 var curHp: int = 10  # здоровье
 var maxHp: int = 10
 var ammo: int = 30  # сколько патронов в обойме
-var score: int = 0  # 
+var damage = 100
 
 # physics
 var moveSpeed: float = 5.0  # скорость игрока
@@ -22,14 +22,17 @@ var mouseDelta: Vector2 = Vector2() #  чтобы следить насколь�
 
 # components
 onready var camera: Camera = get_node("Camera")  # положение камеры 
-# onready нужно чтобы переменная спавнилась только когда игра запускается
-onready var muzzle: Spatial = get_node("Camera/Дуло")
-
 # в этой функции мы пропишем лок курсора по центру и спрячем курсор
+# оружие
+onready var gun = $Camera/mp40
+# прицел оружия
+onready var raycast = $Camera/RayCast
+# дуло 
+onready var muzzle = $Camera/mp40/muzzle
+
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
-	
 
 # в настройках указали кнопки для управления теперь можно писать физику
 func _physics_process(delta):  # функция обновляется 60 раз в секунду
@@ -72,6 +75,22 @@ func _physics_process(delta):  # функция обновляется 60 раз
 	# прыгаем 
 	if Input.is_action_pressed("jump") and is_on_floor():
 		vel.y = jumpForse
+	
+	# нажатие мышью 
+	if Input.is_action_just_pressed("shoot"):
+		if raycast.is_colliding():
+			var bullet = get_world().direct_space_state
+			var collision = bullet.intersect_ray(muzzle.transform.origin, raycast.get_collision_point())
+			if collision:
+				var target = collision.collider
+				if target.is_in_group('Enemy'):
+					print('hit')
+					target.health -= damage
+			
+		
+	
+	if Input.is_action_pressed("shoot"):
+		gun.Shoot()
 	
 
 func _process(delta):

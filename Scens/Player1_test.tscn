@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Player1_test.gd" type="Script" id=1]
-[ext_resource path="res://3d/3dхуйня/mp40(треугольнички).glb" type="PackedScene" id=2]
+[ext_resource path="res://Scens/ПУШКА.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
 height = 1.5
+
+[sub_resource type="CapsuleMesh" id=2]
 
 [node name="KinematicBody" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -17,10 +19,24 @@ shape = SubResource( 1 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
 current = true
-fov = 51.1
+fov = 38.5
 
-[node name="mp40(треугольнички)" parent="Camera" instance=ExtResource( 2 )]
-transform = Transform( 0, 0, 0.278642, 0, 0.278642, 0, -0.278642, 0, 0, 0.2, -0.3, -1 )
+[node name="mp40" parent="Camera" instance=ExtResource( 2 )]
+transform = Transform( -1.32141e-08, 0, 0.302303, 0, 0.302303, 0, -0.302303, 0, -1.32141e-08, 0.257, -0.353, -1.185 )
+
+[node name="muzzle" type="Spatial" parent="Camera/mp40"]
+transform = Transform( 1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 2.37943, 0.692634, 1.19209e-07 )
 
 [node name="Дуло" type="Spatial" parent="Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199872, -0.110919, -1.64696 )
+
+[node name="RayCast" type="RayCast" parent="Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -1000 )
+
+[node name="Position3D" type="Position3D" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -0.489263, 0, 0, 0, -3.27082e-08, 0.748276, 0, -0.498583, -2.17938e-08, 0, 1.14519, 0 )
+mesh = SubResource( 2 )
+material/0 = null
