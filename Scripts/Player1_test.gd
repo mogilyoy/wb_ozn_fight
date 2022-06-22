@@ -27,9 +27,6 @@ onready var camera: Camera = get_node("Camera")  # положение камер
 onready var gun = $Camera/mp40
 # прицел оружия
 onready var raycast = $Camera/RayCast
-# дуло 
-onready var muzzle = $Camera/mp40/muzzle
-
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -74,24 +71,7 @@ func _physics_process(delta):  # функция обновляется 60 раз
 	
 	# прыгаем 
 	if Input.is_action_pressed("jump") and is_on_floor():
-		vel.y = jumpForse
-	
-	# нажатие мышью 
-	if Input.is_action_just_pressed("shoot"):
-		if raycast.is_colliding():
-			var bullet = get_world().direct_space_state
-			var collision = bullet.intersect_ray(muzzle.transform.origin, raycast.get_collision_point())
-			if collision:
-				var target = collision.collider
-				if target.is_in_group('Enemy'):
-					print('hit')
-					target.health -= damage
-			
-		
-	
-	if Input.is_action_pressed("shoot"):
-		gun.Shoot()
-	
+		vel.y = jumpForse	
 
 func _process(delta):
 	# повернуть камеру вокруг оси х

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Player1_test.gd" type="Script" id=1]
 [ext_resource path="res://Scens/ПУШКА.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/camera.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -20,15 +21,13 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
 current = true
 fov = 38.5
+script = ExtResource( 3 )
+camera_path = NodePath(".")
 
 [node name="mp40" parent="Camera" instance=ExtResource( 2 )]
 transform = Transform( -1.32141e-08, 0, 0.302303, 0, 0.302303, 0, -0.302303, 0, -1.32141e-08, 0.257, -0.353, -1.185 )
-
-[node name="muzzle" type="Spatial" parent="Camera/mp40"]
-transform = Transform( 1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 2.37943, 0.692634, 1.19209e-07 )
-
-[node name="Дуло" type="Spatial" parent="Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199872, -0.110919, -1.64696 )
+default_positon = Vector3( 0.257, -0.353, -1.185 )
+ads_positon = Vector3( 0, -0.288, -1.104 )
 
 [node name="RayCast" type="RayCast" parent="Camera"]
 enabled = true
