@@ -86,6 +86,7 @@ func _physics_process(delta):  # функция обновляется 60 раз
 	else:
 		camera.fov = lerp(camera.fov, fv['Default'], ADS_LERP * delta)
 	if Input.is_action_just_pressed("shoot"):
+		print('пиу')
 		gun.ShootGun()
 		var spam = chel.rotation_degrees.x
 		camera.rotation_degrees.x = lerp(camera.rotation_degrees.x, camera.rotation_degrees.x + 4, 1.5)
