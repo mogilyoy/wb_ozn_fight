@@ -3,13 +3,11 @@ extends KinematicBody
 # stats
 var curHp: int = 10  # здоровье
 var maxHp: int = 10
-var ammo: int = 30  # сколько патронов в обойме
-var damage = 100
 
 # physics
-var moveSpeed: float = 5.0  # скорость игрока
-var jumpForse: float = 7.0  # сила прыжка
-var gravity: float = 20.0  # сила гравитации
+var moveSpeed: float = 13.0  # скорость игрока
+var jumpForse: float = 100.0  # сила прыжка
+var gravity: float = 200.0  # сила гравитации
 
 # cam look
 var minLookAngle: float = -90.0  # ограничение на опускание камеры
@@ -27,8 +25,13 @@ onready var camera: Camera = get_node("Camera")  # положение камер
 onready var gun = $Camera/mp40
 # прицел оружия
 onready var raycast = $Camera/RayCast
-# дуло 
-onready var muzzle = $Camera/mp40/muzzle
+
+var fv = {'Default': 60, 'ADS': 22}
+const ADS_LERP = 20
+
+
+onready var chel: KinematicBody = self
+
 
 
 func _ready():
@@ -74,24 +77,19 @@ func _physics_process(delta):  # функция обновляется 60 раз
 	
 	# прыгаем 
 	if Input.is_action_pressed("jump") and is_on_floor():
-		vel.y = jumpForse
-	
-	# нажатие мышью 
-	if Input.is_action_just_pressed("shoot"):
-		if raycast.is_colliding():
-			var bullet = get_world().direct_space_state
-			var collision = bullet.intersect_ray(muzzle.transform.origin, raycast.get_collision_point())
-			if collision:
-				var target = collision.collider
-				if target.is_in_group('Enemy'):
-					print('hit')
-					target.health -= damage
-			
+		vel.y = jumpForse	
 		
-	
-	if Input.is_action_pressed("shoot"):
-		gun.Shoot()
-	
+		
+	if Input.is_action_pressed("aim"):
+		camera.fov = lerp(camera.fov, fv['ADS'], ADS_LERP * delta)
+	else:
+		camera.fov = lerp(camera.fov, fv['Default'], ADS_LERP * delta)
+	if Input.is_action_just_pressed("shoot"):
+		gun.ShootGun()
+		var spam = chel.rotation_degrees.x
+		camera.rotation_degrees.x = lerp(camera.rotation_degrees.x, camera.rotation_degrees.x + 4, 1.5)
+		chel.rotation_degrees.y = lerp(chel.rotation_degrees.y, chel.rotation_degrees.y + rand_range(-2, 2), rand_range(-2, 2))
+		
 
 func _process(delta):
 	# повернуть камеру вокруг оси х
