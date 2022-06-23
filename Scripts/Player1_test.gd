@@ -26,6 +26,7 @@ onready var gun = $Camera/mp40
 # прицел оружия
 onready var raycast = $Camera/RayCast
 
+
 var fv = {'Default': 60, 'ADS': 22}
 const ADS_LERP = 20
 

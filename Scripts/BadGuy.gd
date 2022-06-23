@@ -1,5 +1,8 @@
 extends KinematicBody
 
+onready var girl = $GGirl
+onready var girl_anim = $GGirl/AnimationPlayer
+
 var vel: Vector3 = Vector3()  # вектор скорости челикса
 var gravity: float = 20.0
 var health = 200
@@ -15,8 +18,9 @@ func _process(delta):
 		queue_free()
 		
 func _physics_process(delta):
+	girl_anim.play('ArmatureAction')
 	vel.y -= gravity * delta
-	vel.x = rand_range(-10,10)
 	vel.z = rand_range(-10,10)
 	vel = move_and_slide(vel, Vector3.UP)
+	self.rotate_y(deg2rad(rand_range(0.01, 0.1)))
 	

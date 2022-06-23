@@ -147,7 +147,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.643, 1.11838, -12.7936 )
 skeleton = NodePath("../..")
 
 [node name="MobSpawner" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.0644, -11.8499, -55.1514 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1875, 41.6592, -18.0758 )
 
 [node name="KinematicBody" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.4326, 44.8058, 8.18879 )
