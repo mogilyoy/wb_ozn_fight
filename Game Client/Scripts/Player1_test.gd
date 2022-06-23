@@ -85,12 +85,12 @@ func _physics_process(delta):  # функция обновляется 60 раз
 		camera.fov = lerp(camera.fov, fv['ADS'], ADS_LERP * delta)
 	else:
 		camera.fov = lerp(camera.fov, fv['Default'], ADS_LERP * delta)
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		print('пиу')
 		gun.ShootGun()
 		var spam = chel.rotation_degrees.x
-		camera.rotation_degrees.x = lerp(camera.rotation_degrees.x, camera.rotation_degrees.x + 4, 1.5)
-		chel.rotation_degrees.y = lerp(chel.rotation_degrees.y, chel.rotation_degrees.y + rand_range(-2, 2), rand_range(-2, 2))
+		#camera.rotation_degrees.x = lerp(camera.rotation_degrees.x, camera.rotation_degrees.x + 4, 1.5)
+		#chel.rotation_degrees.y = lerp(chel.rotation_degrees.y, chel.rotation_degrees.y + rand_range(-2, 2), rand_range(-2, 2))
 		
 
 func _process(delta):

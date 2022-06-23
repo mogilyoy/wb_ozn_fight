@@ -31,3 +31,7 @@ func show_waiting_room():
 func _on_ReadyBtn_pressed():
 	Server.load_game()
 	ready_btn.disabled = true
+
+
+func _on_Button_pressed():
+	Server.offline_game()

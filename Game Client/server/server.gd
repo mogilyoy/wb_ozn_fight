@@ -63,6 +63,11 @@ sync func start_game():
 	var world = preload("res://world/World.tscn").instance()
 	get_tree().get_root().add_child(world)
 	get_tree().get_root().get_node('Lobby').queue_free()
+
+func offline_game():
+	var world = preload("res://Scens/Азон_ебёт.tscn").instance()
+	get_tree().get_root().add_child(world)
+	get_tree().get_root().get_node('Lobby').queue_free()
 	
 	
 	

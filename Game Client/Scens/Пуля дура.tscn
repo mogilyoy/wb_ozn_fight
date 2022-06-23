@@ -26,6 +26,9 @@ gravity_scale = 0.5
 contacts_reported = 2
 script = ExtResource( 1 )
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
 
@@ -40,4 +43,5 @@ collision_layer = 0
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 4 )
 
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

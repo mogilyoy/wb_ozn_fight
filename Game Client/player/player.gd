@@ -35,7 +35,7 @@ func _ready():
 
 # в настройках указали кнопки для управления теперь можно писать физику
 func _physics_process(delta):  # функция обновляется 60 раз в секунду
-	if is_network_master():
+	#if is_network_master():
 		# тут мы сбрасываем вектор скорости чтобы когда мы отпускаем кнопку все работало нормально а не через жопу
 		# ресет только х и z скорости чтобы прыгать можно было
 		vel.x = 0
@@ -92,11 +92,11 @@ func _physics_process(delta):  # функция обновляется 60 раз
 		rpc_unreliable_id(1, 'update_player', global_transform)
 
 remote func update_remote_player(transform):
-	if not is_network_master():
+	#if not is_network_master():
 		global_transform = transform
 
 # теперь будем чекать куда смотрит мышь
 func _input(event):  # функция вызывается от любого инпута (мышь, клавиатура и тд)
 	# проверяем вызван ли ивент мышью 
-	if event is InputEventMouseMotion and is_network_master():
+	if event is InputEventMouseMotion: # and is_network_master():
 		mouseDelta = event.relative
