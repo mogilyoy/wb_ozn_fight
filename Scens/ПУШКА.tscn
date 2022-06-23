@@ -6,6 +6,7 @@
 
 [sub_resource type="Animation" id=1]
 length = 0.001
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Plane:translation")
 tracks/0/interp = 1
@@ -164,3 +165,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42151, 0.687963, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34635, 0.694188, 0 )
 enabled = true
 cast_to = Vector3( -1000, 0, 0 )
+
+[node name="Timer" type="Timer" parent="." index="7"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

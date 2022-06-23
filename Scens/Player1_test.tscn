@@ -23,6 +23,7 @@ current = true
 fov = 38.5
 script = ExtResource( 3 )
 camera_path = NodePath(".")
+gun_path = NodePath("mp40")
 
 [node name="mp40" parent="Camera" instance=ExtResource( 2 )]
 transform = Transform( -1.32141e-08, 0, 0.302303, 0, 0.302303, 0, -0.302303, 0, -1.32141e-08, 0.257, -0.353, -1.185 )
