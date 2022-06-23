@@ -11,9 +11,9 @@ radius = 0.05
 mid_height = 0.1
 
 [sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.831373, 0.52549, 0, 1 )
-metallic = 0.91
-metallic_specular = 0.41
+metallic = 0.38
+metallic_specular = 0.0
+metallic_texture_channel = 1
 roughness = 0.0
 
 [sub_resource type="CapsuleShape" id=4]
@@ -22,7 +22,7 @@ height = 0.12
 
 [node name="Bullet" type="RigidBody"]
 collision_layer = 0
-gravity_scale = 0.7
+gravity_scale = 0.5
 contacts_reported = 2
 script = ExtResource( 1 )
 
@@ -30,6 +30,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00529277, -0.00315753, 0.00971919 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 

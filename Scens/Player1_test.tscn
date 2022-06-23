@@ -20,15 +20,13 @@ shape = SubResource( 1 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
 current = true
-fov = 38.5
+fov = 60.0
 script = ExtResource( 3 )
-camera_path = NodePath(".")
-gun_path = NodePath("mp40")
 
 [node name="mp40" parent="Camera" instance=ExtResource( 2 )]
-transform = Transform( -1.32141e-08, 0, 0.302303, 0, 0.302303, 0, -0.302303, 0, -1.32141e-08, 0.257, -0.353, -1.185 )
-default_positon = Vector3( 0.257, -0.353, -1.185 )
-ads_positon = Vector3( 0, -0.288, -1.104 )
+transform = Transform( -1.32141e-08, 0, 0.302303, 0, 0.302303, 0, -0.302303, 0, -1.32141e-08, 0.292, -0.366, -0.788 )
+default_positon = Vector3( 0.292, -0.366, -0.788 )
+ads_positon = Vector3( 0, -0.278, -0.75 )
 
 [node name="RayCast" type="RayCast" parent="Camera"]
 enabled = true

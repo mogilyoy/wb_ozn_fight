@@ -8,12 +8,13 @@ onready var muzzle = $Muzzle
 onready var raycast = $RayCast
 onready var bullet = preload("res://Scens/Пуля дура.tscn") # загружаем в игру пулю
 
+
 var mag = 30
 
 export var default_positon: Vector3
 export var ads_positon: Vector3
 
-var fv = {'Default': 38.5, 'ADS': 18}
+var fv = {'Default': 38.5, 'ADS': 20}
 
 onready var timer = get_node("Timer")
 
@@ -33,7 +34,7 @@ func _physics_process(delta):
 		mag = 30
 
 func ShootGun():
-	if mag > 0:
+	# if mag > 0:
 		if raycast.is_colliding():
 			var b = bullet.instance()
 			muzzle.add_child(b)
