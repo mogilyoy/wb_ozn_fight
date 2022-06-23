@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://MobSpawner.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/MobSpawner.gd" type="Script" id=1]
 
 [node name="MobSpawner" type="Spatial"]
 script = ExtResource( 1 )
