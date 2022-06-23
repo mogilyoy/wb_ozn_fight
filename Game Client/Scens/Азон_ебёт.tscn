@@ -1,0 +1,153 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://3d/3dхуйня/OZMaP.glb" type="PackedScene" id=1]
+[ext_resource path="res://Scens/Player1_test.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scens/Yellow_block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scens/MobSpawner.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="BoxShape" id=2]
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="BoxShape" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="OZMaP" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="OZMaP"]
+transform = Transform( 14.1005, 0, 0, 0, 0.125266, 0, 0, 0, 14.1005, 0, -0.144554, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="OZMaP/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="OZMaP/MeshInstance/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="OZMaP"]
+transform = Transform( 14.1005, 0, 0, 0, -2.46009e-09, -6.33514, 0, 0.125266, -6.16352e-07, 0, 3.90753, 14.361 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="OZMaP/MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="OZMaP/MeshInstance2/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="OZMaP"]
+transform = Transform( -6.16352e-07, -0.125266, 6.16352e-07, 0, -3.02408e-09, -7.78752, 14.1005, -5.47556e-09, 2.69416e-14, -14.4896, 5.05169, 0.14592 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="OZMaP/MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="OZMaP/MeshInstance3/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="OZMaP"]
+transform = Transform( -14.1005, 1.09511e-08, -5.38832e-14, 0, -2.94759e-09, -7.59054, -1.2327e-06, -0.125266, 6.16352e-07, -0.313382, 5.31872, -14.3022 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="OZMaP/MeshInstance4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="OZMaP/MeshInstance4/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="OZMaP"]
+transform = Transform( -6.16352e-07, -0.125266, 6.16352e-07, 0, -2.70857e-09, -6.97502, 14.1005, -5.47556e-09, 2.69416e-14, 14.1872, 4.7296, -0.0649471 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="OZMaP/MeshInstance5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="OZMaP/MeshInstance5/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="OZMaP"]
+transform = Transform( 0.94384, 0, 0, 0, 0.885195, 0, 0, 0, 3.30187, -3.99399, 0.954579, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="OZMaP/MeshInstance6"]
+
+[node name="CollisionShape" type="CollisionShape" parent="OZMaP/MeshInstance6/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="OZMaP"]
+transform = Transform( -3.94341e-08, 0, -3.15602, 0, 0.978491, 0, 0.979657, 0, -1.49807e-07, 1.64513, 0.954579, 5.98734 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="OZMaP/MeshInstance10"]
+
+[node name="CollisionShape" type="CollisionShape" parent="OZMaP/MeshInstance10/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="OZMaP"]
+transform = Transform( 0.94384, 0, 0, 0, 0.996113, 0, 0, 0, 3.16263, -3.99399, 0.954579, -8.08047 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="OZMaP/MeshInstance7"]
+
+[node name="CollisionShape" type="CollisionShape" parent="OZMaP/MeshInstance7/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="OZMaP"]
+transform = Transform( -4.29067e-08, 0, 3.28913, 0, 0.996113, 0, -0.97791, 0, -1.43233e-07, 6.38831, 0.954579, -6.21683 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="OZMaP/MeshInstance8"]
+
+[node name="CollisionShape" type="CollisionShape" parent="OZMaP/MeshInstance8/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="OZMaP"]
+transform = Transform( -0.97791, 0, -2.87006e-07, 0, 1.92261, 0, 8.4926e-08, 0, -3.26123, 4.01625, 1.9652, -0.0311779 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="OZMaP/MeshInstance9"]
+
+[node name="CollisionShape" type="CollisionShape" parent="OZMaP/MeshInstance9/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance11" parent="OZMaP" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.335, 3.94455, -12.7936 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance12" parent="OZMaP" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8472, 6.18712, -10.1978 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance13" parent="OZMaP" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8472, 8.15533, -6.73378 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance14" parent="OZMaP" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8472, 9.90555, -4.1269 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance15" parent="OZMaP" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8472, 11.8276, -1.18958 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance16" parent="OZMaP" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8472, 13.7041, 2.51122 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance17" parent="OZMaP" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.643, 1.11838, -12.7936 )
+skeleton = NodePath("../..")
+
+[node name="MobSpawner" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1875, 41.6592, -18.0758 )
+
+[node name="KinematicBody" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.4326, 44.8058, 8.18879 )

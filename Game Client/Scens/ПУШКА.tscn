@@ -6,6 +6,7 @@
 
 [sub_resource type="Animation" id=1]
 length = 0.001
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Plane:translation")
 tracks/0/interp = 1
@@ -132,6 +133,9 @@ height = 3.0
 [node name="mp40(треугольнички)" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
+[node name="Plane" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44386, 0.613005, 0 )
+
 [node name="Anim" type="AnimationPlayer" parent="." index="2"]
 anims/RESET = SubResource( 1 )
 "anims/Отдача" = SubResource( 2 )
@@ -153,3 +157,15 @@ draw_pass_3 = null
 pause_mode = 1
 stream = ExtResource( 2 )
 volume_db = 4.436
+
+[node name="Muzzle" type="Spatial" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42151, 0.687963, 0 )
+
+[node name="RayCast" type="RayCast" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34635, 0.694188, 0 )
+enabled = true
+cast_to = Vector3( -1000, 0, 0 )
+
+[node name="Timer" type="Timer" parent="." index="7"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

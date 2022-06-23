@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/BadGuy.gd" type="Script" id=1]
+[ext_resource path="res://Scens/GGirl.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CapsuleShape" id=3]
+height = 1.7211
+
+[node name="BadGuy" type="KinematicBody" groups=["Enemy"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.352001, 0 )
+script = ExtResource( 1 )
+
+[node name="GGirl" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.718134, 0, 0, 0, -5.12255e-08, 1.1719, 0, -0.467907, -2.04528e-08, 0, 1.87777, -0.0537901 )
+shape = SubResource( 3 )
