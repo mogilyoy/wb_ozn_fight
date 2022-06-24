@@ -28,6 +28,9 @@ func _physics_process(delta):
 	else:
 		transform.origin = transform.origin.linear_interpolate(default_positon, ADS_LERP * delta)
 		
+	if Input.is_action_just_pressed("reload"):
+		mag = 30	
+	
 	if Input.is_action_pressed("move_forward"):
 		if animation.is_playing():
 			pass
@@ -38,9 +41,7 @@ func _physics_process(delta):
 			pass
 		else:
 			animation.stop()
-		
-	if Input.is_action_just_pressed("reload"):
-		mag = 30
+	
 			
 func GunAnimation():
 	animation.stop()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scens/Player1_test.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scens/BadGuy.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [sub_resource type="SphereShape" id=4]
 
 [sub_resource type="SphereMesh" id=5]
+
+[sub_resource type="BoxShape" id=6]
 
 [node name="Spatial" type="Spatial"]
 transform = Transform( 1.05968, 0, 0, 0, 1.05968, 0, 0, 0, 1.05968, 0, 0, 0 )
@@ -44,7 +46,7 @@ transform = Transform( 1, 0, 0, 0, 0.0429045, 0.999079, 0, -0.999079, 0.0429045,
 transform = Transform( 1, 0, 0, 0, 0.0429045, 0.999079, 0, -0.999079, 0.0429045, -1.84106, 0.414141, 2.92254 )
 
 [node name="KinematicBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.605947, 0, 0, 0, 0.605947, 0, 0, 0, 0.605947, -2.73369, 0.0297093, -2.36014 )
+transform = Transform( 0.605947, 0, 0, 0, 0.605947, 0, 0, 0, 0.605947, -1.02599, 5.51399, -2.36014 )
 
 [node name="BadGuy" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.750457, 0, 0, 0, 0.750457, 0, 0, 0, 0.750457, 2.39649, 0.0297196, 2.91625 )
@@ -105,3 +107,37 @@ material/0 = null
 
 [node name="MAP" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.943681, 0.0943681, 2.92541 )
+
+[node name="StaticBody" type="StaticBody" parent="MAP"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( 0.401793, 0, 11.6951, 0, 2.89731, 0, -0.780518, 0, 6.03673, 26.1583, 1.09499, 36.4917 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( 0.400092, 0, -11.7215, 0, 2.89731, 0, 0.781391, 0, 5.9854, -26.1219, 1.09499, 36.4917 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( 0.857376, 0, -11.6956, 0, 0.445978, 0, 1.66131, 0, 6.03591, -25.6992, 0.755011, 32.9029 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( 0.817846, 0, 11.8351, 0, 0.445978, 0, -1.68112, 0, 5.75762, 25.815, 0.755011, 33.006 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( 1.71154, 0, -3.80802, 0, 0.445978, 0, 0.752111, 0, 8.66569, -11.1841, 0.755011, 18.153 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( 1.71071, 0, 3.81757, 0, 0.445978, 0, -0.753998, 0, 8.66149, 11.491, 0.755011, 18.9235 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( 0.692919, 0, 4.67685, 0, 3.29298, 0, -0.315521, 0, 10.487, 10.691, 1.19507, 21.3955 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( 0.693448, 0, -4.82233, 0, 3.29298, 0, 0.314356, 0, 10.4209, -10.825, 1.19507, 21.3955 )
+shape = SubResource( 6 )

@@ -100,14 +100,14 @@ func _physics_process(delta):  # функция обновляется 60 раз
 	else:
 		camera.fov = lerp(camera.fov, fv['Default'], ADS_LERP * delta)
 	if Input.is_action_just_pressed("shoot"):	
-		if mag > 0:
-			if raycast.is_colliding():
-				var body = raycast.get_collider()
-				if body.is_in_group('Enemy'):
-					body.health -= damage
-					mag -= 1
-				#animation.stop()
-				gun.GunAnimation()
+		#if mag > 0:
+		if raycast.is_colliding():
+			var body = raycast.get_collider()
+			if body.is_in_group('Enemy'):
+				body.health -= damage
+				mag -= 1
+			#animation.stop()
+			gun.GunAnimation()
 		camera.rotation_degrees.x = lerp(camera.rotation_degrees.x, camera.rotation_degrees.x + rand_range(1, 3), rand_range(7,10)*delta)
 		chel.rotation_degrees.y = lerp(chel.rotation_degrees.y, chel.rotation_degrees.y + rand_range(1,2), rand_range(2,3)*delta)
 		
