@@ -5,7 +5,7 @@ onready var girl_anim = $GGirl/AnimationPlayer
 
 var vel: Vector3 = Vector3()  # вектор скорости челикса
 var gravity: float = 20.0
-var health = 200
+var health = 100
 
 
 # Called when the node enters the scene tree for the first time.

@@ -5,9 +5,9 @@ var curHp: int = 10  # здоровье
 var maxHp: int = 10
 
 # physics
-var moveSpeed: float = 13.0  # скорость игрока
-var jumpForse: float = 100.0  # сила прыжка
-var gravity: float = 200.0  # сила гравитации
+var moveSpeed: float = 10.0  # скорость игрока
+var jumpForse: float = 50.0  # сила прыжка
+var gravity: float = 98  # сила гравитации
 
 # cam look
 var minLookAngle: float = -90.0  # ограничение на опускание камеры
@@ -17,17 +17,20 @@ var lookSensitivity: float = 10.0  # чувствительность мыши
 # vectors
 var vel: Vector3 = Vector3()  # вектор скорости челикса
 var mouseDelta: Vector2 = Vector2() #  чтобы следить насколько у нас сместилась мышь на новом фрейме
-
+var mag = 30
 # components
 onready var camera: Camera = get_node("Camera")  # положение камеры 
 # в этой функции мы пропишем лок курсора по центру и спрячем курсор
 # оружие
 onready var gun = $Camera/mp40
+onready var gun_anim = $Camera/mp40/Anim
 # прицел оружия
 onready var raycast = $Camera/RayCast
+onready var camera_animation = $Camera/AnimationPlayer
 
+const damage = 500
 
-var fv = {'Default': 60, 'ADS': 22}
+var fv = {'Default': 50, 'ADS': 15}
 const ADS_LERP = 20
 
 
@@ -44,11 +47,21 @@ func _physics_process(delta):  # функция обновляется 60 раз
 	# ресет только х и z скорости чтобы прыгать можно было
 	vel.x = 0
 	vel.z = 0
-	
+	lookSensitivity = 10
+	moveSpeed = 13
 	# теперь нужно чекать нажатия на кнопки wasd чтобы изменять скорость 
 	var input = Vector2()
 	if Input.is_action_pressed("move_forward"):
 		input.y -= 1  # типа побежали вперед
+		if camera_animation.is_playing():
+			pass
+		else:
+			camera_animation.play("КАЧАЕТ")
+	if Input.is_action_just_released("move_forward"):
+		if camera_animation.is_playing():
+			pass
+		else:
+			camera_animation.stop()
 	if Input.is_action_pressed("move_backward"):
 		input.y += 1   # типа побежали назад
 	if Input.is_action_pressed("move_left"):
@@ -70,7 +83,7 @@ func _physics_process(delta):  # функция обновляется 60 раз
 	vel.x = relativeDir.x * moveSpeed
 	vel.z = relativeDir.z * moveSpeed
 	
-	# задаем гравитацию
+	# задаем гравитацию 
 	vel.y -= gravity * delta  # 60 раз в сеунду задаём скорость по у = гравитации
 	
 	# перемещаем игрока
@@ -83,14 +96,28 @@ func _physics_process(delta):  # функция обновляется 60 раз
 		
 	if Input.is_action_pressed("aim"):
 		camera.fov = lerp(camera.fov, fv['ADS'], ADS_LERP * delta)
+		lookSensitivity = 5
 	else:
 		camera.fov = lerp(camera.fov, fv['Default'], ADS_LERP * delta)
-	if Input.is_action_pressed("shoot"):
-		print('пиу')
-		gun.ShootGun()
-		var spam = chel.rotation_degrees.x
-		#camera.rotation_degrees.x = lerp(camera.rotation_degrees.x, camera.rotation_degrees.x + 4, 1.5)
-		#chel.rotation_degrees.y = lerp(chel.rotation_degrees.y, chel.rotation_degrees.y + rand_range(-2, 2), rand_range(-2, 2))
+	if Input.is_action_just_pressed("shoot"):	
+		#if mag > 0:
+		if raycast.is_colliding():
+			var body = raycast.get_collider()
+			if body.is_in_group('Enemy'):
+				body.health -= damage
+				mag -= 1
+			#animation.stop()
+			gun.GunAnimation()
+		camera.rotation_degrees.x = lerp(camera.rotation_degrees.x, camera.rotation_degrees.x + rand_range(1, 3), rand_range(7,10)*delta)
+		chel.rotation_degrees.y = lerp(chel.rotation_degrees.y, chel.rotation_degrees.y + rand_range(1,2), rand_range(2,3)*delta)
+		
+	if Input.is_action_pressed("speed"):
+		vel.x = relativeDir.x * moveSpeed * 1.3
+		vel.z = relativeDir.z * moveSpeed * 1.3
+		vel = move_and_slide(vel, Vector3.UP)
+		
+		# camera.rotation_degrees.x = lerp(camera.rotation_degrees.x, camera.rotation_degrees.x + 2, 0.5)
+		# chel.rotation_degrees.y = lerp(chel.rotation_degrees.y, chel.rotation_degrees.y + rand_range(-1, 1), rand_range(-1, 1))
 		
 
 func _process(delta):

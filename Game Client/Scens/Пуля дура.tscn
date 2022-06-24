@@ -22,7 +22,7 @@ height = 0.12
 
 [node name="Bullet" type="RigidBody"]
 collision_layer = 0
-gravity_scale = 0.5
+mass = 0.3
 contacts_reported = 2
 script = ExtResource( 1 )
 
@@ -30,6 +30,7 @@ script = ExtResource( 1 )
 one_shot = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 2.84326, 0, 0, 0, 2.84326, 0, 0, 0, 2.84326, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -41,6 +42,7 @@ material/0 = SubResource( 3 )
 collision_layer = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1.25378, 0, 0, 0, 1.25378, 0, 0, 0, 1.25378, 0, 0, 0.0069675 )
 shape = SubResource( 4 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
