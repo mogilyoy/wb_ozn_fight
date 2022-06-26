@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scens/Player1_test.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scens/BadGuy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://3d/3dхуйня/MAP.glb" type="PackedScene" id=3]
+[ext_resource path="res://Scens/MobSpawner.tscn" type="PackedScene" id=4]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -15,6 +16,11 @@
 [sub_resource type="SphereMesh" id=5]
 
 [sub_resource type="BoxShape" id=6]
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 1, 1.23136, 1 )
+
+[sub_resource type="BoxShape" id=8]
 
 [node name="Spatial" type="Spatial"]
 transform = Transform( 1.05968, 0, 0, 0, 1.05968, 0, 0, 0, 1.05968, 0, 0, 0 )
@@ -141,3 +147,26 @@ shape = SubResource( 6 )
 [node name="CollisionShape4" type="CollisionShape" parent="MAP/StaticBody"]
 transform = Transform( 0.693448, 0, -4.82233, 0, 3.29298, 0, 0.314356, 0, 10.4209, -10.825, 1.19507, 21.3955 )
 shape = SubResource( 6 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( 3.7833, 0, 0, 0, 2.26634, 0, 0, 0, 3.22079, 0, 15.1962, -1.11667 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 157.942, 0, 0, 0, 169.98, 102.77, 125.327, 0 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( -4.37114e-08, 0, -169.98, 0, 157.942, 0, 1, 0, -7.43005e-06, 4.1639, 97.6396, 174.555 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( -1, 0, 1.48601e-05, 0, 157.942, 0, -8.74228e-08, 0, -169.98, -164.396, 90.5588, 12.4987 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="MAP/StaticBody"]
+transform = Transform( 1.31134e-07, 0, 169.98, 0, 157.942, 0, -1, 0, 2.22902e-05, -12.1303, 90.5588, -106.904 )
+shape = SubResource( 8 )
+
+[node name="MobSpawner" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.534142, 21.3824, 0.701151 )
