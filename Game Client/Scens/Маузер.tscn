@@ -1,0 +1,295 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://3d/3dхуйня/mp40(треугольнички).glb" type="PackedScene" id=1]
+[ext_resource path="res://Sounds/выстрел мосина.mp3" type="AudioStream" id=2]
+[ext_resource path="res://Scripts/маузер.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/BAX.gd" type="Script" id=4]
+[ext_resource path="res://Particles/PNG (Transparent)/smoke_01.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Plane:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -1.44386, 0.613005, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Plane:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BAX:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Particles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BAX:stream_paused")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Particles2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Бег"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Plane:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -20, 20, 60 ), Vector3( -20.597, 19.157, 62.589 ), Vector3( -20, 20, 60 ), Vector3( -20.597, 19.157, 62.589 ), Vector3( -20, 20, 60 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Plane:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -1.851, -0.866, 0 ), Vector3( -1.822, -0.084, 0 ), Vector3( -1.851, -0.866, 0 ), Vector3( -1.822, -0.084, 0 ), Vector3( -1.851, -0.866, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Дымок"
+length = 2.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Отдача"
+length = 1.87
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Plane:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.35, 0.79 ),
+"transitions": PoolRealArray( 1, 2.07053, 0.812252, 1 ),
+"update": 0,
+"values": [ Vector3( -1.44386, 0.613005, 0 ), Vector3( -2.515, 0.619, 0 ), Vector3( -1.444, 0.597, 0 ), Vector3( -1.44386, 0.613005, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Plane:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.35, 0.79 ),
+"transitions": PoolRealArray( 1, 1.93187, 0.63728, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 1.283 ), Vector3( 0.027, -0.053, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Particles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.23 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Particles2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Шаг"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Plane:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -1.44386, 0.613005, 0 ), Vector3( -1.444, 0.55, 0 ), Vector3( -1.44386, 0.613005, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Plane:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -0.02 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.31
+gravity = Vector3( 200, 0, 0 )
+initial_velocity = -200.0
+initial_velocity_random = 0.53
+
+[sub_resource type="CylinderMesh" id=4]
+height = 3.0
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 5 )
+
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0, 0.993789 )
+colors = PoolColorArray( 0.746094, 0.227325, 0, 1, 1, 0.84375, 0, 1 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 13 )
+
+[sub_resource type="Curve" id=9]
+min_value = -3.0
+max_value = 3.0
+_data = [ Vector2( 0.282609, 2.14091 ), 0.0, 0.0, 0, 0, Vector2( 0.98913, 0.409091 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+spread = 12.51
+gravity = Vector3( 0, 0, 100 )
+angular_velocity = 2.0
+angular_velocity_random = 0.61
+linear_accel = -1.0
+angle = 180.0
+angle_random = 1.0
+scale = 3.0
+scale_random = 0.8
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 14 )
+
+[sub_resource type="QuadMesh" id=12]
+
+[node name="mp40(треугольнички)" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+script = ExtResource( 3 )
+
+[node name="Plane" parent="." index="1"]
+transform = Transform( 0.796226, 0, 0, 0, 0.796226, 0, 0, 0, 0.796226, -1.44386, 0.613005, 0 )
+
+[node name="Anim" type="AnimationPlayer" parent="." index="2"]
+anims/RESET = SubResource( 1 )
+"anims/Бег" = SubResource( 6 )
+"anims/Дымок" = SubResource( 7 )
+"anims/Отдача" = SubResource( 2 )
+"anims/Шаг" = SubResource( 5 )
+
+[node name="Particles" type="Particles" parent="." index="3"]
+transform = Transform( -1.66103e-09, 0.038, 0, -0.038, -1.66103e-09, 0, 0, 0, 0.038, -1.22034, 0.787164, -0.0135415 )
+emitting = false
+amount = 1
+lifetime = 0.3
+one_shot = true
+visibility_aabb = AABB( -4, -3.85596, -4, 8, 8, 8 )
+process_material = SubResource( 3 )
+draw_passes = 3
+draw_pass_1 = SubResource( 4 )
+draw_pass_2 = null
+draw_pass_3 = null
+
+[node name="BAX" type="AudioStreamPlayer" parent="." index="4"]
+pause_mode = 1
+stream = ExtResource( 2 )
+volume_db = 4.436
+script = ExtResource( 4 )
+
+[node name="Muzzle" type="Spatial" parent="." index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42151, 0.687963, 0 )
+
+[node name="Timer" type="Timer" parent="." index="6"]
+
+[node name="Particles2" type="Particles" parent="." index="7"]
+transform = Transform( 1.01213e-08, 2.01016e-08, 0.282082, 0, 0.335842, 1.2946e-07, -0.335842, -1.04391e-14, -1.4649e-07, 1.64818, 0.688311, 7.20442e-08 )
+material_override = SubResource( 8 )
+amount = 1
+lifetime = 0.05
+one_shot = true
+process_material = SubResource( 11 )
+draw_pass_1 = SubResource( 12 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

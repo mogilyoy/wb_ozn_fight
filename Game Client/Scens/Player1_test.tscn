@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Player1_test.gd" type="Script" id=1]
-[ext_resource path="res://Scens/ПУШКА.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scens/Маузер.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/camera.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.210801, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 2.30123, 0 ), Vector3( 0, 2.227, 0 ), Vector3( 0, 2.30123, 0 ) ]
+"values": [ Vector3( 0, 2.30123, 0 ), Vector3( 0, 2.062, 0 ), Vector3( 0, 2.30123, 0 ) ]
 }
 
 [node name="KinematicBody" type="KinematicBody"]
@@ -56,13 +56,13 @@ script = ExtResource( 3 )
 enabled = true
 cast_to = Vector3( 0, 0, -1000 )
 
-[node name="mp40" parent="Camera" instance=ExtResource( 2 )]
-transform = Transform( -1.32141e-08, 0, 0.302303, 0, 0.302303, 0, -0.302303, 0, -1.32141e-08, 0.292, -0.366, -0.788 )
-default_positon = Vector3( 0.292, -0.366, -0.788 )
-ads_positon = Vector3( 0, -0.259, -0.652 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
 anims/RESET = SubResource( 2 )
 "anims/КАЧАЕТ" = SubResource( 3 )
+
+[node name="mauzer" parent="Camera" instance=ExtResource( 2 )]
+transform = Transform( -1.70885e-08, 2.99773e-10, 0.391, 0.00685801, 0.39094, 0, -0.39094, 0.00685801, -1.70912e-08, 0.119, -0.342, -0.506 )
+default_positon = Vector3( 0.119, -0.342, -0.506 )
+ads_positon = Vector3( 0, -0.322, -0.511 )
 
 [node name="Position3D" type="Position3D" parent="."]

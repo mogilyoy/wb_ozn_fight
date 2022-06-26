@@ -1,12 +1,15 @@
 extends Camera
 
-onready var gun = $mp40
+onready var gun = $mauzer
+onready var raycast = $RayCast
 
 var gun_original_rotation = Vector3.ZERO
 var relative_input = Vector2.ZERO
 
 func _ready():
 	gun_original_rotation = gun.rotation_degrees
+	
+
 	
 func _input(event):
 	if event is InputEventMouseMotion:

@@ -22,8 +22,9 @@ var mag = 30
 onready var camera: Camera = get_node("Camera")  # положение камеры 
 # в этой функции мы пропишем лок курсора по центру и спрячем курсор
 # оружие
-onready var gun = $Camera/mp40
-onready var gun_anim = $Camera/mp40/Anim
+onready var gun = $Camera/mauzer
+onready var gun_anim = $Camera/mauzer/Anim
+onready var gun_sound = $Camera/mauzer/BAX
 # прицел оружия
 onready var raycast = $Camera/RayCast
 onready var camera_animation = $Camera/AnimationPlayer
@@ -99,15 +100,8 @@ func _physics_process(delta):  # функция обновляется 60 раз
 		lookSensitivity = 5
 	else:
 		camera.fov = lerp(camera.fov, fv['Default'], ADS_LERP * delta)
-	if Input.is_action_just_pressed("shoot"):	
-		#if mag > 0:
-		if raycast.is_colliding():
-			var body = raycast.get_collider()
-			if body.is_in_group('Enemy'):
-				body.health -= damage
-				mag -= 1
-			#animation.stop()
-			gun.GunAnimation()
+	if Input.is_action_just_pressed("shoot"):
+		gun.GunAnimation(raycast.get_collision_point(), Vector3.UP)
 		camera.rotation_degrees.x = lerp(camera.rotation_degrees.x, camera.rotation_degrees.x + rand_range(1, 3), rand_range(7,10)*delta)
 		chel.rotation_degrees.y = lerp(chel.rotation_degrees.y, chel.rotation_degrees.y + rand_range(1,2), rand_range(2,3)*delta)
 		
